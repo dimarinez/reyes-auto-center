@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reyes Auto Center — Reparación de Autos San Diego</title>
+    <meta name="description" content="Reyes Auto Center in San Diego 92114. Full service auto repair. Se habla español. Call (619) 822-5482.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --green: #16a34a;
+            --green-dark: #15803d;
+            --green-light: #22c55e;
+            --red: #dc2626;
+            --dark: #111827;
+            --white: #ffffff;
+            --off-white: #f9fafb;
+            --gray: #6b7280;
+            --charcoal: #1f2937;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; color: var(--charcoal); background: var(--white); }
+
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 100;
+            background: rgba(17,24,39,0.97); backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .nav-brand {
+            font-family: 'Archivo Black', sans-serif;
+            color: var(--white); font-size: 1.2rem;
+        }
+        .nav-brand span { color: var(--green); }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a {
+            color: rgba(255,255,255,0.7); text-decoration: none;
+            font-size: 0.85rem; font-weight: 500; transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--green); }
+        .nav-lang {
+            background: var(--green); color: var(--white);
+            padding: 0.3rem 0.8rem; border-radius: 4px;
+            font-size: 0.75rem; font-weight: 600; cursor: pointer; border: none;
+        }
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
+        .hamburger span { width: 25px; height: 2px; background: var(--green); }
+
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--dark) 0%, var(--green-dark) 100%);
+            display: flex; align-items: center; justify-content: center;
+            text-align: center; padding: 6rem 2rem;
+        }
+        .hero-content { max-width: 700px; }
+        .hero-bilingual {
+            color: var(--green-light); font-size: 0.85rem;
+            letter-spacing: 3px; text-transform: uppercase;
+            margin-bottom: 1.5rem; font-weight: 500;
+        }
+        .hero h1 {
+            font-family: 'Archivo Black', sans-serif;
+            color: var(--white); font-size: 3.5rem;
+            line-height: 1.1; margin-bottom: 1rem;
+        }
+        .hero h1 span { color: var(--green-light); }
+        .hero p { color: rgba(255,255,255,0.7); font-size: 1.05rem; line-height: 1.7; margin-bottom: 0.75rem; }
+        .hero .es { color: rgba(255,255,255,0.5); font-style: italic; font-size: 0.95rem; margin-bottom: 2.5rem; }
+        .btn {
+            display: inline-block; padding: 0.9rem 2.5rem;
+            text-decoration: none; font-weight: 600;
+            font-size: 0.9rem; border-radius: 8px; transition: all 0.3s;
+        }
+        .btn-green { background: var(--green); color: var(--white); }
+        .btn-green:hover { background: var(--green-light); }
+        .btn-outline { border: 1.5px solid rgba(255,255,255,0.3); color: var(--white); margin-left: 1rem; }
+        .btn-outline:hover { border-color: var(--green); color: var(--green); }
+
+        section { padding: 5rem 2rem; }
+        .section-header { text-align: center; margin-bottom: 3rem; }
+        .section-header h2 { font-family: 'Archivo Black', sans-serif; font-size: 2rem; }
+        .section-header .sub-es { color: var(--gray); font-style: italic; font-size: 0.9rem; }
+        .section-header p { color: var(--gray); margin-top: 0.3rem; }
+        .green-line { width: 50px; height: 3px; background: var(--green); margin: 0.5rem auto; }
+
+        .services { background: var(--off-white); }
+        .services-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem; max-width: 1100px; margin: 0 auto;
+        }
+        .service-card {
+            background: var(--white); border-radius: 10px;
+            padding: 2rem; border: 1px solid #e5e7eb;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .service-card:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0,0,0,0.06); }
+        .service-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+        .service-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.15rem; }
+        .service-card .es-name { color: var(--green); font-size: 0.85rem; font-style: italic; margin-bottom: 0.5rem; }
+        .service-card p { color: var(--gray); font-size: 0.88rem; line-height: 1.6; }
+
+        .cta {
+            background: var(--green-dark); color: var(--white); text-align: center;
+        }
+        .cta h2 { font-family: 'Archivo Black', sans-serif; font-size: 2rem; margin-bottom: 0.5rem; }
+        .cta .es-sub { color: rgba(255,255,255,0.7); font-style: italic; margin-bottom: 2rem; }
+        .cta-grid {
+            display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; margin-bottom: 2.5rem;
+        }
+        .cta-item .label { color: var(--green-light); font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.3rem; font-weight: 600; }
+        .cta-item a { color: var(--white); text-decoration: none; font-size: 1.1rem; }
+        .cta-item a:hover { text-decoration: underline; }
+
+        .map-container { max-width: 700px; margin: 0 auto; border-radius: 10px; overflow: hidden; border: 2px solid rgba(22,163,74,0.3); }
+        .map-container iframe { width: 100%; height: 280px; border: none; }
+
+        footer {
+            background: var(--dark); color: var(--gray);
+            text-align: center; padding: 2rem; font-size: 0.8rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+            .nav-links.active {
+                display: flex; flex-direction: column; position: absolute;
+                top: 100%; left: 0; right: 0;
+                background: var(--dark); padding: 1.5rem 2rem; gap: 1rem;
+            }
+            .hero h1 { font-size: 2.5rem; }
+            .btn-outline { margin-left: 0; margin-top: 1rem; }
+            .hero .btn { display: block; width: 100%; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-brand">REYES <span>AUTO</span></div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#services">Services / Servicios</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('active')" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <p class="hero-bilingual">Se Habla Español • English Spoken</p>
+            <h1>Reyes <span>Auto Center</span></h1>
+            <p>Full-service auto repair in San Diego. Honest work, fair prices, and bilingual service you can trust.</p>
+            <p class="es">Reparación completa de autos. Trabajo honesto, precios justos, y servicio bilingüe.</p>
+            <a href="tel:6198225482" class="btn btn-green">Call (619) 822-5482</a>
+            <a href="#services" class="btn btn-outline">Our Services</a>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="section-header">
+            <h2>Services / Servicios</h2>
+            <div class="green-line"></div>
+            <p>Complete auto care for all makes and models</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🔧</div>
+                <h3>General Repair</h3>
+                <div class="es-name">Reparación General</div>
+                <p>Engine, transmission, and all mechanical repairs. Diagnostics included.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🛢️</div>
+                <h3>Oil Change</h3>
+                <div class="es-name">Cambio de Aceite</div>
+                <p>Quick and affordable oil changes with filter replacement and fluid check.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🛞</div>
+                <h3>Brakes</h3>
+                <div class="es-name">Frenos</div>
+                <p>Brake pads, rotors, lines, and complete brake system service.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">⚡</div>
+                <h3>Electrical</h3>
+                <div class="es-name">Sistema Eléctrico</div>
+                <p>Battery, alternator, starter, and electrical diagnostics.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">❄️</div>
+                <h3>A/C Service</h3>
+                <div class="es-name">Aire Acondicionado</div>
+                <p>A/C recharge, diagnostics, and full climate system repair.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🔍</div>
+                <h3>Smog & Inspections</h3>
+                <div class="es-name">Inspecciones</div>
+                <p>Smog checks, pre-purchase inspections, and comprehensive assessments.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta" id="contact">
+        <h2>Visit Us Today</h2>
+        <p class="es-sub">Visítenos hoy — estamos aquí para ayudarle</p>
+        <div class="cta-grid">
+            <div class="cta-item">
+                <div class="label">Phone / Teléfono</div>
+                <div><a href="tel:6198225482">(619) 822-5482</a></div>
+            </div>
+            <div class="cta-item">
+                <div class="label">Location / Ubicación</div>
+                <div>San Diego, CA 92114</div>
+            </div>
+            <div class="cta-item">
+                <div class="label">Hours / Horario</div>
+                <div>Mon–Sat: 8AM–6PM</div>
+            </div>
+        </div>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13400.0!2d-117.1!3d32.7!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80d953f4a5e8b0a7%3A0x1234567890abcdef!2sSan%20Diego%2C%20CA%2092114!5e0!3m2!1sen!2sus!4v1" allowfullscreen loading="lazy"></iframe>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Reyes Auto Center. All rights reserved. | San Diego, CA | Se Habla Español</p>
+    </footer>
+</body>
+</html>
